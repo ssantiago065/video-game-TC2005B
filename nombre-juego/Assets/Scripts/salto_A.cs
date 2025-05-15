@@ -1,12 +1,13 @@
 using UnityEngine; //libreria necesaria para usar scripts en unity
 
-public class salto : MonoBehaviour
+public class salto_A : MonoBehaviour
 {
     public float speed = 5f; //velocidad de movimiento del personaje punto flotante
     public float jumpForce = 10f; // cantidad de fuerza del salto
     private Rigidbody2D rb;
     private Vector2 moveInput; 
-    private bool isGrounded; //bandera para saber si está en el piso.
+    public bool isGrounded; //bandera para saber si está en el piso.
+    private bool cooldownJ;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class salto : MonoBehaviour
         //moveInput.y = Input.GetAxis("Vertical");
 
         // Detectar salto con barra espaciadora o clic del mouse
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
@@ -39,6 +40,18 @@ public class salto : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false;
         }
+        else
+        {
+            doubleJump();
+        }
+    }
+
+    void doubleJump() {
+        if (cooldownJ)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            cooldownJ = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +60,7 @@ public class salto : MonoBehaviour
         if (collision.gameObject.CompareTag("suelo"))
         {
             isGrounded = true;
+            cooldownJ = true;
         }
     }
 

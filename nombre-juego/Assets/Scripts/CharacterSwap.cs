@@ -4,6 +4,7 @@ public class CharacterSwap : MonoBehaviour
 {
     private GameObject[] characterList;
     private int index = 0;
+    private bool isGrounded;
 
     private void Start()
     {
@@ -59,7 +60,18 @@ public class CharacterSwap : MonoBehaviour
         Rigidbody2D newRb = characterList[index].GetComponent<Rigidbody2D>();
         if (newRb != null)
             newRb.linearVelocity = currentVelocity;
-    }
+        
+        RaycastHit2D hit = Physics2D.Raycast(characterList[index].transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
 
+        // Asignar isGrounded según el resultado
+        if (characterList[index].TryGetComponent(out salto_S sScript))
+        {
+            sScript.isGrounded = hit.collider != null;
+        }
+        else if (characterList[index].TryGetComponent(out salto_A aScript))
+        {
+            aScript.isGrounded = hit.collider != null;
+        }
+    }
 
 }
