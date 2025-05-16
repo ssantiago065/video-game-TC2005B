@@ -3,7 +3,7 @@ public class Colisiones : MonoBehaviour
 {
     void onCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemigo"))
+        if (collision.gameObject.CompareTag("enemigo"))
         {
             Debug.Log("Colisión iniciada con: " + collision.gameObject.name);
         }
@@ -11,7 +11,7 @@ public class Colisiones : MonoBehaviour
 
     void onCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemigo"))
+        if (collision.gameObject.CompareTag("enemigo"))
         {
             Debug.Log("Colisión manteniendose con: " + collision.gameObject.name);
         }
@@ -19,7 +19,7 @@ public class Colisiones : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemigo"))
+        if (collision.gameObject.CompareTag("enemigo"))
         {
             Debug.Log("Colisión Finalizada con: " + collision.gameObject.name);
         }
