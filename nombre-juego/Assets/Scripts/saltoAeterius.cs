@@ -10,7 +10,7 @@ public class saltoAeterius : MonoBehaviour
     public bool cooldownSalto = true;
     private SpriteRenderer spriteRenderer;
     private bool facingRight = true;
-
+    public saltoSolaris solaris;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
@@ -80,6 +80,7 @@ public class saltoAeterius : MonoBehaviour
         {
             isGrounded = true;
             cooldownSalto = true;
+            solaris.cooldownDash = true;
         }
     }
 

@@ -6,13 +6,16 @@ public class ataqueAeterius : MonoBehaviour
 {
     public Transform puntoDisparo;
     public GameObject plantillaBala;
+    public float attackCooldown = 1f; // Tiempo entre ataques en segundos
+    private float nextAttackTime = 0f;
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
         {
             Debug.Log("Disparo");
             Attack();
+            nextAttackTime = Time.time + attackCooldown;
         }
     }
 

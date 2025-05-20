@@ -17,6 +17,7 @@ public class saltoSolaris : MonoBehaviour
     private float direccionDash = 1f;
     private SpriteRenderer spriteRenderer;
     private bool facingRight = true;
+    public saltoAeterius aeterius;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class saltoSolaris : MonoBehaviour
             cooldownDash = false;
             isDashing = true;
 
+            GetComponent<ataqueSolaris>().Attack();
             direccionDash = moveInput.x;
             if (direccionDash == 0)
                 direccionDash = transform.localScale.x;
@@ -109,6 +111,7 @@ public class saltoSolaris : MonoBehaviour
         {
             isGrounded = true;
             cooldownDash = true;
+            aeterius.cooldownSalto = true;
         }
     }
 
