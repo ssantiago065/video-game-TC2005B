@@ -15,11 +15,14 @@ public class saltoSolaris : MonoBehaviour
     public bool isDashing = false;
     private TrailRenderer tr;
     private float direccionDash = 1f;
+    private SpriteRenderer spriteRenderer;
+    private bool facingRight = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
         tr = GetComponent<TrailRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     void Update()
@@ -64,10 +67,27 @@ public class saltoSolaris : MonoBehaviour
     {
         if (!isDashing)
         {
-            rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
+            float moveX = Input.GetAxisRaw("Horizontal");
+            rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y);
+
+            if (moveX > 0 && !facingRight)
+            {
+                Flip();
+            }
+            else if (moveX < 0 && facingRight)
+            {
+                Flip();
+            }
         }
     }
 
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
 
     void Jump() //cambio de bandera para verificar que esta en el suelo
     {
