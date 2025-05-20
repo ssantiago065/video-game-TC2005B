@@ -8,10 +8,13 @@ public class saltoAeterius : MonoBehaviour
     private Vector2 moveInput; 
     public bool isGrounded; //bandera para saber si está en el piso.
     public bool cooldownSalto = true;
+    private SpriteRenderer spriteRenderer;
+    private bool facingRight = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     void Update()
@@ -28,10 +31,26 @@ public class saltoAeterius : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
-        //rb.linearVelocity = new Vector2(rb.linearVelocity.x ,moveInput.y * speed);
+        float moveX = Input.GetAxisRaw("Horizontal");
+        rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y);
+
+        if (moveX > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (moveX < 0 && facingRight)
+        {
+            Flip();
+        }
     }
 
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
 
     void Jump() //cambio de bandera para verificar que esta en el suelo
     {
