@@ -11,6 +11,8 @@ public class ataqueAeterius : MonoBehaviour
 
     public void Update()
     {
+        if (MenuPausa.JuegoPausado) return;
+
         if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
         {
             Debug.Log("Disparo");

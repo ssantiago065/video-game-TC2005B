@@ -10,6 +10,8 @@ public class ataqueSolaris : MonoBehaviour
 
     public void Update()
     {
+        if (MenuPausa.JuegoPausado) return;
+        
         if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
         {
             Debug.Log("Golpe");

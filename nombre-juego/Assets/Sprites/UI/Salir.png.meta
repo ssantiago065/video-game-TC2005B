@@ -3,8 +3,8 @@ guid: 6420f164492745f4185f58655b26ef27
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2205612098571034996
-    second: ChatGPT Image May 18, 2025, 01_21_55 AM_0
+      213: -5086458757861956760
+    second: Salir_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image May 18, 2025, 01_21_55 AM_0
+      name: Salir_0
       rect:
         serializedVersion: 2
-        x: 69
-        y: 88
-        width: 897
-        height: 835
+        x: 0
+        y: 0
+        width: 884
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47161af8488eb9e10800000000000000
-      internalID: 2205612098571034996
+      spriteID: 863a6fc75b44969b0800000000000000
+      internalID: -5086458757861956760
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ChatGPT Image May 18, 2025, 01_21_55 AM_0: 2205612098571034996
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
