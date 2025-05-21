@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Shuriken : MonoBehaviour
 {
     public float velocidad = 10f;
     public Vector2 direccion = Vector2.right;

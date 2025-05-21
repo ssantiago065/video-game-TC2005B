@@ -1505,10 +1505,10 @@ MonoBehaviour:
   cooldownDash: 1
   isDashing: 0
   aeterius: {fileID: 1510640400}
-  wallLayer:
+  capaPared:
     serializedVersion: 2
     m_Bits: 256
-  wallCheck: {fileID: 533521464}
+  checkPared: {fileID: 533521464}
 --- !u!114 &610804522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,7 +1526,7 @@ MonoBehaviour:
   Enemigos:
     serializedVersion: 2
     m_Bits: 8
-  attackCooldown: 1
+  cooldownAtaque: 1
 --- !u!1 &747620773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,10 +3317,10 @@ MonoBehaviour:
   isGrounded: 0
   cooldownSalto: 0
   solaris: {fileID: 610804521}
-  wallLayer:
+  capaPared:
     serializedVersion: 2
     m_Bits: 256
-  wallCheck: {fileID: 2091737288}
+  checkPared: {fileID: 2091737288}
 --- !u!114 &1510640401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,7 +3335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puntoDisparo: {fileID: 756718355}
   plantillaBala: {fileID: 454978486858730963, guid: b3d7d030181c3d342a6d33adb84ff293, type: 3}
-  attackCooldown: 1
+  cooldownAtaque: 1
 --- !u!1 &1639975633
 GameObject:
   m_ObjectHideFlags: 0
