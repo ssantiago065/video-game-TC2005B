@@ -6,6 +6,25 @@ public class CambioPersonaje : MonoBehaviour
     private int indice = 0;
     private bool isGrounded;
     float[] ajustesAltura = new float[] { 0f, 0.4f };
+    public int IndicePersonajeActivo => indice;
+
+    public void CambiarPersonajePorIndice(int nuevoIndice)
+    {
+        if (nuevoIndice < 0 || nuevoIndice >= listaPersonajes.Length) return;
+
+        // Desactivar el personaje actual
+        listaPersonajes[indice].SetActive(false);
+
+        // Cambiar índice
+        indice = nuevoIndice;
+
+        // Activar el nuevo personaje
+        listaPersonajes[indice].SetActive(true);
+
+        // (Opcional) Ajustar posición si quieres mantener la posición previa aquí, 
+        // pero el control de posición lo hacemos en controlGuardado ahora.
+    }
+
 
     private void Start()
     {
