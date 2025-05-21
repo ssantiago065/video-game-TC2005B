@@ -18,7 +18,9 @@ public class saltoSolaris : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool facingRight = true;
     public saltoAeterius aeterius;
-
+    private float velocidadWallSlide = 2f;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private Transform wallCheck;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
@@ -34,9 +36,10 @@ public class saltoSolaris : MonoBehaviour
         // Detectar salto con barra espaciadora
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump(); 
+            Jump();
         }
-        
+
+        wallSlide();
     }
 
     private IEnumerator dash()
@@ -69,14 +72,13 @@ public class saltoSolaris : MonoBehaviour
     {
         if (!isDashing)
         {
-            float moveX = Input.GetAxisRaw("Horizontal");
-            rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
 
-            if (moveX > 0 && !facingRight)
+            if (moveInput.x > 0 && !facingRight)
             {
                 Flip();
             }
-            else if (moveX < 0 && facingRight)
+            else if (moveInput.x < 0 && facingRight)
             {
                 Flip();
             }
@@ -101,6 +103,19 @@ public class saltoSolaris : MonoBehaviour
         else
         {
             StartCoroutine(dash());
+        }
+    }
+
+    private bool isWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+    }
+
+    private void wallSlide()
+    {
+        if (isWalled() && !isGrounded && moveInput.x != 0f)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -velocidadWallSlide, float.MaxValue));
         }
     }
 

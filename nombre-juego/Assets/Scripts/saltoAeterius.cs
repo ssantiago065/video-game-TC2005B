@@ -51,14 +51,13 @@ public class saltoAeterius : MonoBehaviour
     {
         if (!isWallJumping)
         {
-            float moveX = Input.GetAxisRaw("Horizontal");
-            rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
 
-            if (moveX > 0 && !facingRight && !isWallJumping)
+            if (moveInput.x > 0 && !facingRight && !isWallJumping)
             {
                 Flip();
             }
-            else if (moveX < 0 && facingRight && !isWallJumping)
+            else if (moveInput.x < 0 && facingRight && !isWallJumping)
             {
                 Flip();
             }
@@ -101,7 +100,7 @@ public class saltoAeterius : MonoBehaviour
 
     private void wallSlide()
     {
-        if (isWalled() && !isGrounded && horizontal != 0f)
+        if (isWalled() && !isGrounded && moveInput.x != 0f)
         {
             isWallSliding = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -velocidadWallSlide, float.MaxValue));

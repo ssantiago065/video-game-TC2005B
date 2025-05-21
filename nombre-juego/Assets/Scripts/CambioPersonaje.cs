@@ -5,6 +5,7 @@ public class CambioPersonaje : MonoBehaviour
     private GameObject[] listaPersonajes;
     private int indice = 0;
     private bool isGrounded;
+    float[] ajustesAltura = new float[] { 0f, 0.4f };
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class CambioPersonaje : MonoBehaviour
         // Desactivar todos los personajes
         foreach (GameObject personaje in listaPersonajes)
             personaje.SetActive(false);
-        
+
         // Activar el primer personaje
         if (listaPersonajes[0])
             listaPersonajes[0].SetActive(true);
@@ -63,7 +64,9 @@ public class CambioPersonaje : MonoBehaviour
         indice = (indice == 0) ? 1 : 0;
 
         // Mover el nuevo personaje a la posicion anterior
-        listaPersonajes[indice].transform.position = posicionActual;
+        Vector3 nuevaPos = posicionActual;
+        nuevaPos.y += ajustesAltura[indice] - ajustesAltura[(indice == 0) ? 1 : 0];
+        listaPersonajes[indice].transform.position = nuevaPos;
 
         // Activar el nuevo personaje
         listaPersonajes[indice].SetActive(true);
