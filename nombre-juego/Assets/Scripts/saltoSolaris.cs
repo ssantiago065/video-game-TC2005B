@@ -16,11 +16,12 @@ public class saltoSolaris : MonoBehaviour
     private TrailRenderer tr;
     private float direccionDash = 1f;
     private SpriteRenderer spriteRenderer;
-    private bool facingRight = true;
+    private bool orientaDer = true;
     public saltoAeterius aeterius;
     private float velocidadWallSlide = 2f;
-    [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask capaPared;
+    [SerializeField] private Transform checkPared;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
@@ -74,11 +75,11 @@ public class saltoSolaris : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
 
-            if (moveInput.x > 0 && !facingRight)
+            if (moveInput.x > 0 && !orientaDer)
             {
                 Flip();
             }
-            else if (moveInput.x < 0 && facingRight)
+            else if (moveInput.x < 0 && orientaDer)
             {
                 Flip();
             }
@@ -87,7 +88,7 @@ public class saltoSolaris : MonoBehaviour
 
     void Flip()
     {
-        facingRight = !facingRight;
+        orientaDer = !orientaDer;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
@@ -108,7 +109,7 @@ public class saltoSolaris : MonoBehaviour
 
     private bool isWalled()
     {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        return Physics2D.OverlapCircle(checkPared.position, 0.2f, capaPared);
     }
 
     private void wallSlide()

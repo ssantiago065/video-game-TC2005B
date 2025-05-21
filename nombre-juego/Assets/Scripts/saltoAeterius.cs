@@ -9,13 +9,12 @@ public class saltoAeterius : MonoBehaviour
     public bool isGrounded; //bandera para saber si está en el piso.
     public bool cooldownSalto = true;
     private SpriteRenderer spriteRenderer;
-    private bool facingRight = true;
+    private bool orientaDer = true;
     public saltoSolaris solaris;
     private bool isWallSliding;
     private float velocidadWallSlide = 2f;
-    [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private Transform wallCheck;
-    private float horizontal;
+    [SerializeField] private LayerMask capaPared;
+    [SerializeField] private Transform checkPared;
     private bool isWallJumping;
     private float direccionWallJump;
     private float tiempoWallJump = 1f;
@@ -34,7 +33,6 @@ public class saltoAeterius : MonoBehaviour
     {
         moveInput.x = Input.GetAxis("Horizontal");
         //moveInput.y = Input.GetAxis("Vertical");
-        horizontal = Input.GetAxisRaw("Horizontal");
 
         // Detectar salto con barra espaciadora o clic del mouse
         if (Input.GetKeyDown(KeyCode.Space))
@@ -53,11 +51,11 @@ public class saltoAeterius : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
 
-            if (moveInput.x > 0 && !facingRight && !isWallJumping)
+            if (moveInput.x > 0 && !orientaDer && !isWallJumping)
             {
                 Flip();
             }
-            else if (moveInput.x < 0 && facingRight && !isWallJumping)
+            else if (moveInput.x < 0 && orientaDer && !isWallJumping)
             {
                 Flip();
             }
@@ -66,7 +64,7 @@ public class saltoAeterius : MonoBehaviour
 
     void Flip()
     {
-        facingRight = !facingRight;
+        orientaDer = !orientaDer;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
@@ -86,7 +84,7 @@ public class saltoAeterius : MonoBehaviour
     }
 
     void dobleSalto() {
-        if (cooldownSalto)
+        if (cooldownSalto && !isWalled())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             cooldownSalto = false;
@@ -95,7 +93,7 @@ public class saltoAeterius : MonoBehaviour
 
     private bool isWalled()
     {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        return Physics2D.OverlapCircle(checkPared.position, 0.2f, capaPared);
     }
 
     private void wallSlide()

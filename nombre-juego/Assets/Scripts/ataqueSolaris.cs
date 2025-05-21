@@ -5,18 +5,18 @@ public class ataqueSolaris : MonoBehaviour
     public GameObject puntoAtaque;
     public float radio = 0.5f;
     public LayerMask Enemigos;
-    public float attackCooldown = 1f; // Tiempo entre ataques en segundos
-    private float nextAttackTime = 0f;
+    public float cooldownAtaque = 1f; 
+    private float tiempoSiguienteAtaque = 0f;
 
     public void Update()
     {
         if (MenuPausa.JuegoPausado) return;
-        
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
+
+        if (Input.GetMouseButtonDown(0) && Time.time >= tiempoSiguienteAtaque)
         {
             Debug.Log("Golpe");
             Attack();
-            nextAttackTime = Time.time + attackCooldown;
+            tiempoSiguienteAtaque = Time.time + cooldownAtaque;
         }
     }
 

@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public Vector2 direction = Vector2.right;
+    public float velocidad = 10f;
+    public Vector2 direccion = Vector2.right;
 
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direction.normalized * speed;
+        rb.linearVelocity = direccion.normalized * velocidad;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -18,9 +18,13 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("enemigo"))
         {
             Debug.Log("Enemigo golpeado");
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("suelo"))
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("pared"))
         {
             Destroy(gameObject); 
         }
