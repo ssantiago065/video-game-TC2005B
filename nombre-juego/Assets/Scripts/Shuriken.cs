@@ -10,7 +10,7 @@ public class Shuriken : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direccion.normalized * velocidad;
+        rb.linearVelocity = direccion.normalized * velocidad;  // Nota: es velocity, no linearVelocity
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -20,12 +20,18 @@ public class Shuriken : MonoBehaviour
             Debug.Log("Enemigo golpeado");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("suelo"))
+        else if (collision.gameObject.CompareTag("suelo") || collision.gameObject.CompareTag("pared"))
         {
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("pared"))
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        logicaDron dron = other.GetComponent<logicaDron>();
+        if (dron != null)
         {
+            dron.DetenerTemporalmente(10f);
             Destroy(gameObject); 
         }
     }

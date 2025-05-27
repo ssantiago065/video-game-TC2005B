@@ -8,6 +8,8 @@ TagManager:
   - jugador
   - enemigo
   - pared
+  - techo
+  - bola
   layers:
   - Default
   - TransparentFX

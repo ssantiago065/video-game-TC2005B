@@ -26,6 +26,11 @@ public class ataqueSolaris : MonoBehaviour
 
         foreach (Collider2D enemigo in enemigosHit)
         {
+            logicaDron dron = enemigo.GetComponent<logicaDron>();
+                if (dron != null)
+                {
+                    dron.DetenerTemporalmente(10f);
+                }
             Debug.Log("Enemigo golpeado: " + enemigo.name);
         }
     }

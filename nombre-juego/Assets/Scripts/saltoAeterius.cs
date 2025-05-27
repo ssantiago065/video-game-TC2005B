@@ -87,7 +87,7 @@ public class saltoAeterius : MonoBehaviour
         if (cooldownSalto && !isWalled())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            cooldownSalto = false;
+            //cooldownSalto = false;
         }
     }
 
