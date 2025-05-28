@@ -129,9 +129,12 @@ public class logicaDron : MonoBehaviour
 
     public void DetenerTemporalmente(float segundos)
     {
-        detenido = true;
-        tiempoDetenido = segundos;
-        Debug.Log("Dron detenido por " + segundos + " segundos.");
+        if(enMovimiento)
+        {
+            detenido = true;
+            tiempoDetenido = segundos;
+            Debug.Log("Dron detenido por " + segundos + " segundos.");
+        }
     }
     
     public void Reiniciar()

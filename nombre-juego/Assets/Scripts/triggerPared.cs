@@ -9,6 +9,7 @@ public class triggerPared : MonoBehaviour
         if (collision.gameObject.CompareTag("jugador"))
         {
             controlador.ActivarEtapa2();
+            Destroy(gameObject, 2f);
         }
     }
 }

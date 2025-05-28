@@ -5,26 +5,34 @@ using System.Collections;
 public class controladorEscena : MonoBehaviour
 {
     public GameObject grupoDrones2;
-    public Image pantallaFade; // asigna tu imagen negra aquí
+    public GameObject grupoDrones3;
+    public Image pantallaFade;
     public float duracionFade = 1.5f;
     private bool etapa2Iniciada = false;
+    private bool etapa3Iniciada = false;
 
     public void ActivarEtapa2()
     {
         if (etapa2Iniciada) return;
         etapa2Iniciada = true;
         StartCoroutine(FadeEntreFases());
+        grupoDrones2.SetActive(true);
     }
-
+    public void ActivarEtapa3()
+    {
+        if (etapa3Iniciada) return;
+        etapa3Iniciada = true;
+        StartCoroutine(FadeEntreFases());
+        grupoDrones3.SetActive(true);
+    }
     IEnumerator FadeEntreFases()
     {
         yield return StartCoroutine(Fade(0f, 1f)); // Fade to black
-        grupoDrones2.SetActive(true);
         yield return new WaitForSeconds(0.3f); // tiempo opcional para efecto dramático
         yield return StartCoroutine(Fade(1f, 0f)); // Fade out (mostrar escena)
     }
 
-    IEnumerator Fade(float from, float to)
+    public IEnumerator Fade(float from, float to)
     {
         float t = 0f;
         while (t < duracionFade)
