@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class paredTrigger : MonoBehaviour
+public class triggerPared : MonoBehaviour
 {
     public controladorEscena controlador;
 

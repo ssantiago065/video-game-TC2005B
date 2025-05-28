@@ -3,9 +3,9 @@ using UnityEngine; //libreria necesaria para usar scripts en unity
 public class saltoAeterius : MonoBehaviour
 {
     public float speed = 5f; //velocidad de movimiento del personaje punto flotante
-    public float jumpForce = 6f; // cantidad de fuerza del salto
+    public float jumpForce = 4f; // cantidad de fuerza del salto
     private Rigidbody2D rb;
-    private Vector2 moveInput; 
+    private Vector2 moveInput;
     public bool isGrounded; //bandera para saber si está en el piso.
     public bool cooldownSalto = true;
     private SpriteRenderer spriteRenderer;
@@ -26,7 +26,7 @@ public class saltoAeterius : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -83,7 +83,8 @@ public class saltoAeterius : MonoBehaviour
         }
     }
 
-    void dobleSalto() {
+    void dobleSalto()
+    {
         if (cooldownSalto && !isWalled())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -134,7 +135,7 @@ public class saltoAeterius : MonoBehaviour
             {
                 Flip();
             }
-            
+
             Invoke(nameof(stopWallJump), tiempoWallJump);
         }
     }
@@ -147,12 +148,12 @@ public class saltoAeterius : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Verificar si el personaje está tocando el suelo
-        if (collision.gameObject.CompareTag("suelo"))
+        if (collision.gameObject.CompareTag("suelo") || collision.gameObject.CompareTag("enemigo"))
         {
             isGrounded = true;
             cooldownSalto = true;
             solaris.cooldownDash = true;
         }
     }
-
+    
 }

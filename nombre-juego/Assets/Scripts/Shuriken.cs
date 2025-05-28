@@ -25,14 +25,4 @@ public class Shuriken : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        logicaDron dron = other.GetComponent<logicaDron>();
-        if (dron != null)
-        {
-            dron.DetenerTemporalmente(10f);
-            Destroy(gameObject); 
-        }
-    }
 }

@@ -5,7 +5,7 @@ public class CambioPersonaje : MonoBehaviour
     private GameObject[] listaPersonajes;
     private int indice = 0;
     private bool isGrounded;
-    float[] ajustesAltura = new float[] { 0f, 4f };
+    float[] ajustesAltura = new float[] { 0f, 0.4f };
     public int IndicePersonajeActivo => indice;
 
     public void CambiarPersonajePorIndice(int nuevoIndice)

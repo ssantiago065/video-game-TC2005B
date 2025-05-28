@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class saltoSolaris : MonoBehaviour
 {
     public float speed = 5f; //velocidad de movimiento del personaje punto flotante
-    public float jumpForce = 10f; // cantidad de fuerza del salto
+    public float jumpForce = 4f; // cantidad de fuerza del salto
     private Rigidbody2D rb;
-    private Vector2 moveInput; 
+    private Vector2 moveInput;
     public bool isGrounded; //bandera para saber si está en el piso.
     public bool cooldownDash = true;
     private float fuerzaDash = 10f;
@@ -26,7 +26,7 @@ public class saltoSolaris : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
         tr = GetComponent<TrailRenderer>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -50,7 +50,6 @@ public class saltoSolaris : MonoBehaviour
             cooldownDash = false;
             isDashing = true;
 
-            GetComponent<ataqueSolaris>().Attack();
             direccionDash = moveInput.x;
             if (direccionDash == 0)
                 direccionDash = transform.localScale.x;
@@ -61,7 +60,16 @@ public class saltoSolaris : MonoBehaviour
             rb.linearVelocity = new Vector2(direccionDash * fuerzaDash, 0f);
             tr.emitting = true;
 
-            yield return new WaitForSeconds(duracionDash);
+            float tiempo = 0f;
+            float intervaloGolpe = 0.05f;
+            while (tiempo < duracionDash)
+            {
+                GetComponent<ataqueSolaris>().Attack();
+                // GetComponent<ataqueSolaris>().Attack();
+
+                tiempo += intervaloGolpe;
+                yield return new WaitForSeconds(intervaloGolpe);
+            }
 
             tr.emitting = false;
             rb.gravityScale = gravedadOriginal;
@@ -123,12 +131,11 @@ public class saltoSolaris : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Verificar si el personaje está tocando el suelo
-        if (collision.gameObject.CompareTag("suelo"))
+        if (collision.gameObject.CompareTag("suelo") || collision.gameObject.CompareTag("enemigo"))
         {
             isGrounded = true;
             cooldownDash = true;
             aeterius.cooldownSalto = true;
         }
     }
-
 }

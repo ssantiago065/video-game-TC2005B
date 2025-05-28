@@ -22,16 +22,17 @@ public class ataqueSolaris : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D[] enemigosHit = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, Enemigos);
+        // Busca SOLO objetos con DamageZone, ya no hace falta buscar en hijos
+        Collider2D[] zonasGolpeadas = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, Enemigos);
 
-        foreach (Collider2D enemigo in enemigosHit)
+        foreach (Collider2D zona in zonasGolpeadas)
         {
-            logicaDron dron = enemigo.GetComponent<logicaDron>();
-                if (dron != null)
-                {
-                    dron.DetenerTemporalmente(10f);
-                }
-            Debug.Log("Enemigo golpeado: " + enemigo.name);
+            DamageZone damageZone = zona.GetComponent<DamageZone>();
+            if (damageZone != null)
+            {
+                damageZone.RecibirGolpe();
+                Debug.Log("Dron golpeado por ataque de Solaris");
+            }
         }
     }
 

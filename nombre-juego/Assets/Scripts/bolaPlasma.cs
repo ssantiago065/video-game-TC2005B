@@ -19,7 +19,7 @@ public class bolaPlasma : MonoBehaviour
 
         foreach (GameObject bola in bolas)
         {
-            if (bola != this.gameObject) // para no ignorar colisión con sí misma
+            if (bola != this.gameObject)
             {
                 Collider2D colOtraBola = bola.GetComponent<Collider2D>();
                 if (colOtraBola != null)
@@ -30,22 +30,14 @@ public class bolaPlasma : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("jugador"))
+        if (other.CompareTag("jugador"))
         {
             Debug.Log("Jugador golpeado");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("suelo"))
-        {
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("pared"))
-        {
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("techo"))
+        else if (other.CompareTag("suelo") || other.CompareTag("pared") || other.CompareTag("techo"))
         {
             Destroy(gameObject);
         }

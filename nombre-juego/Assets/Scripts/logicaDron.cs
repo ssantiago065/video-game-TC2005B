@@ -14,7 +14,7 @@ public class logicaDron : MonoBehaviour
     private float tiempoSiguienteAtaque = 0f;
 
     // --- Control ---
-    private Vector3 posicionInicial;
+    private Vector2 posicionInicial;
     private bool enMovimiento = false;
     public bool viendoDerecha = true;
 
@@ -38,11 +38,9 @@ public class logicaDron : MonoBehaviour
             if (tiempoDetenido <= 0)
             {
                 detenido = false;
-                Debug.Log("Dron reanudó movimiento y ataque.");
             }
             else
             {
-                // Mientras está detenido, no hace nada
                 return;
             }
         }
@@ -60,19 +58,17 @@ public class logicaDron : MonoBehaviour
         {
             yield return new WaitForSeconds(tiempoEspera);
 
-            if (!enMovimiento && !detenido)  // No se mueve si está detenido
+            if (!enMovimiento && !detenido)
             {
                 enMovimiento = true;
 
-                Vector3 direccion = viendoDerecha ? Vector3.right : Vector3.left;
-                Vector3 destino = posicionInicial + direccion * distancia;
+                Vector2 direccion = viendoDerecha ? Vector2.right : Vector2.left;
+                Vector2 destino = posicionInicial + direccion * distancia;
 
-                // Mover hacia adelante
                 yield return StartCoroutine(MoverA(destino));
 
                 yield return new WaitForSeconds(1f);
 
-                // Mover de regreso
                 yield return StartCoroutine(MoverA(posicionInicial));
 
                 enMovimiento = false;
@@ -80,21 +76,20 @@ public class logicaDron : MonoBehaviour
         }
     }
 
-    IEnumerator MoverA(Vector3 destino)
+    IEnumerator MoverA(Vector2 destino)
     {
-        Vector3 inicio = transform.position;
+        Vector2 inicio = transform.position;
         float tiempo = 0f;
 
         while (tiempo < duracionMovimiento)
         {
             if (detenido)
             {
-                // Espera aquí mientras está detenido
                 yield return null;
                 continue;
             }
 
-            transform.position = Vector3.Lerp(inicio, destino, tiempo / duracionMovimiento);
+            transform.position = Vector2.Lerp(inicio, destino, tiempo / duracionMovimiento);
             tiempo += Time.deltaTime;
             yield return null;
         }
@@ -104,11 +99,11 @@ public class logicaDron : MonoBehaviour
 
     void Attack()
     {
-        if (detenido) return;  // No ataca si está detenido
+        if (detenido) return;
 
-        int cantidadBalas = 5;
-        float anguloInicial = -20f;
-        float separacionAngulo = 10f;
+        int cantidadBalas = 3;
+        float anguloInicial = -10f;           // primer bala: -10°
+        float separacionAngulo = 10f;         // siguiente bala: +10°
 
         for (int i = 0; i < cantidadBalas; i++)
         {
@@ -132,11 +127,17 @@ public class logicaDron : MonoBehaviour
         }
     }
 
-    // Método público para detener al dron temporalmente
     public void DetenerTemporalmente(float segundos)
     {
         detenido = true;
         tiempoDetenido = segundos;
         Debug.Log("Dron detenido por " + segundos + " segundos.");
+    }
+    
+    public void Reiniciar()
+    {
+        transform.position = posicionInicial;
+        detenido = false;
+        tiempoDetenido = 0f;
     }
 }
