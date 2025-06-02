@@ -10,7 +10,7 @@ public class saltoSolaris : MonoBehaviour
     private Vector2 moveInput;
     public bool isGrounded; //bandera para saber si está en el piso.
     public bool cooldownDash = true;
-    private float fuerzaDash = 10f;
+    private float fuerzaDash = 20f;
     private float duracionDash = 0.5f;
     public bool isDashing = false;
     private TrailRenderer tr;
@@ -65,7 +65,6 @@ public class saltoSolaris : MonoBehaviour
             while (tiempo < duracionDash)
             {
                 GetComponent<ataqueSolaris>().Attack();
-                // GetComponent<ataqueSolaris>().Attack();
 
                 tiempo += intervaloGolpe;
                 yield return new WaitForSeconds(intervaloGolpe);

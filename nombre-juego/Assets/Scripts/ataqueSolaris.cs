@@ -7,6 +7,7 @@ public class ataqueSolaris : MonoBehaviour
     public LayerMask Enemigos;
     public float cooldownAtaque = 1f; 
     private float tiempoSiguienteAtaque = 0f;
+    public LayerMask ParedDebil;
 
     public void Update()
     {
@@ -22,7 +23,7 @@ public class ataqueSolaris : MonoBehaviour
 
     public void Attack()
     {
-        // Busca SOLO objetos con DamageZone, ya no hace falta buscar en hijos
+        // Atacar enemigos
         Collider2D[] zonasGolpeadas = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, Enemigos);
 
         foreach (Collider2D zona in zonasGolpeadas)
@@ -34,8 +35,19 @@ public class ataqueSolaris : MonoBehaviour
                 Debug.Log("Dron golpeado por ataque de Solaris");
             }
         }
-    }
 
+        // Romper paredes débiles con el mismo puntoAtaque
+        Collider2D[] paredes = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, ParedDebil);
+
+        foreach (Collider2D pared in paredes)
+        {
+            if (pared.CompareTag("paredDebil"))
+            {
+                Debug.Log("Pared destruida antes del impacto");
+                Destroy(pared.gameObject);
+            }
+        }
+    }
     void OnDrawGizmosSelected()
     {
         if (puntoAtaque == null) return;

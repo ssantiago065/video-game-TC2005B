@@ -6,6 +6,7 @@ public class controladorEscena : MonoBehaviour
 {
     public GameObject grupoDrones2;
     public GameObject grupoDrones3;
+    public GameObject paredesFaseFinal;
     public Image pantallaFade;
     public float duracionFade = 1.5f;
     private bool etapa2Iniciada = false;
@@ -24,6 +25,7 @@ public class controladorEscena : MonoBehaviour
         etapa3Iniciada = true;
         StartCoroutine(FadeEntreFases());
         grupoDrones3.SetActive(true);
+        paredesFaseFinal.SetActive(true);
     }
     IEnumerator FadeEntreFases()
     {

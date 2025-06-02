@@ -7,18 +7,15 @@ public class logicaDron : MonoBehaviour
     private float distancia = 50f;
     private float duracionMovimiento = 10f;
 
-    // --- Ataque ---
     public Transform puntoDisparo;
     public GameObject plantillaBala;
     private float cooldownAtaque = 5f;
     private float tiempoSiguienteAtaque = 0f;
 
-    // --- Control ---
     private Vector2 posicionInicial;
     private bool enMovimiento = false;
     public bool viendoDerecha = true;
 
-    // --- Detención temporal ---
     private bool detenido = false;
     private float tiempoDetenido = 0f;
 
@@ -129,18 +126,22 @@ public class logicaDron : MonoBehaviour
 
     public void DetenerTemporalmente(float segundos)
     {
-        if(enMovimiento)
+        if (enMovimiento)
         {
             detenido = true;
             tiempoDetenido = segundos;
             Debug.Log("Dron detenido por " + segundos + " segundos.");
         }
     }
-    
+
     public void Reiniciar()
     {
         transform.position = posicionInicial;
         detenido = false;
         tiempoDetenido = 0f;
+    }
+    public void Detener()
+    {
+        detenido = true;
     }
 }

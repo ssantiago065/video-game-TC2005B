@@ -19,7 +19,7 @@ public class saltoAeterius : MonoBehaviour
     private float direccionWallJump;
     private float tiempoWallJump = 1f;
     private float contadorWallJump;
-    private Vector2 fuerzaWallJump = new Vector2(8f, 10f);
+    private Vector2 fuerzaWallJump = new Vector2(20f, 25f);
 
 
 

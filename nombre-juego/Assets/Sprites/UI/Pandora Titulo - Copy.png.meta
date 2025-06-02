@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a6d7db5f12d4820468147d70f76ddd98
+guid: 501c457c8eea9a04ab82cb3487d61312
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4070053480332467730
-    second: ChatGPT Image May 16, 2025, 11_42_13 PM_0
+      213: 6969047154717163408
+    second: Pandora Titulo - Copy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image May 16, 2025, 11_42_13 PM_0
+      name: Pandora Titulo - Copy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21e1f08831cbb7830800000000000000
-      internalID: 4070053480332467730
+      spriteID: 09ffcdfa67707b060800000000000000
+      internalID: 6969047154717163408
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ChatGPT Image May 16, 2025, 11_42_13 PM_0: 4070053480332467730
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
