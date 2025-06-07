@@ -97,7 +97,7 @@ public class controlGuardado : MonoBehaviour
 
         if (hijoActivo != null)
         {
-            hijoActivo.position = datos.posicionJugador;
+            //hijoActivo.position = datos.posicionJugador;
             Debug.Log("Posición cargada: " + datos.posicionJugador);
         }
         else

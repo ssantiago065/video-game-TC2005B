@@ -21,6 +21,12 @@ public class saltoSolaris : MonoBehaviour
     private float velocidadWallSlide = 2f;
     [SerializeField] private LayerMask capaPared;
     [SerializeField] private Transform checkPared;
+    controladorAudio controladorAudio;
+
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+    }
 
     void Start()
     {
@@ -62,6 +68,7 @@ public class saltoSolaris : MonoBehaviour
 
             float tiempo = 0f;
             float intervaloGolpe = 0.05f;
+            controladorAudio.PlaySFX(controladorAudio.Dash);
             while (tiempo < duracionDash)
             {
                 GetComponent<ataqueSolaris>().Attack();
@@ -106,6 +113,7 @@ public class saltoSolaris : MonoBehaviour
         if (isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            controladorAudio.PlaySFX(controladorAudio.Salto);
             isGrounded = false;
         }
         else

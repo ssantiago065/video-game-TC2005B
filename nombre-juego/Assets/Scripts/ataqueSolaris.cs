@@ -8,6 +8,14 @@ public class ataqueSolaris : MonoBehaviour
     public float cooldownAtaque = 1f; 
     private float tiempoSiguienteAtaque = 0f;
     public LayerMask ParedDebil;
+    controladorAudio controladorAudio;
+    private saltoSolaris movimientoS;
+
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+        movimientoS = GetComponent<saltoSolaris>();
+    }
 
     public void Update()
     {
@@ -23,27 +31,33 @@ public class ataqueSolaris : MonoBehaviour
 
     public void Attack()
     {
-        // Atacar enemigos
         Collider2D[] zonasGolpeadas = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, Enemigos);
-
+        
+        bool golpeoEnemigo = false;
         foreach (Collider2D zona in zonasGolpeadas)
         {
             DamageZone damageZone = zona.GetComponent<DamageZone>();
             if (damageZone != null)
             {
                 damageZone.RecibirGolpe();
+                golpeoEnemigo = true;
                 Debug.Log("Dron golpeado por ataque de Solaris");
             }
         }
 
-        // Romper paredes débiles con el mismo puntoAtaque
-        Collider2D[] paredes = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, ParedDebil);
+        // Solo reproducir sonido si golpeó y no está haciendo dash
+        if (golpeoEnemigo && (movimientoS == null || !movimientoS.isDashing))
+        {
+            controladorAudio.PlaySFX(controladorAudio.Golpe);
+        }
 
+        Collider2D[] paredes = Physics2D.OverlapCircleAll(puntoAtaque.transform.position, radio, ParedDebil);
         foreach (Collider2D pared in paredes)
         {
             if (pared.CompareTag("paredDebil"))
             {
                 Debug.Log("Pared destruida antes del impacto");
+                controladorAudio.PlaySFX(controladorAudio.paredRota);
                 Destroy(pared.gameObject);
             }
         }

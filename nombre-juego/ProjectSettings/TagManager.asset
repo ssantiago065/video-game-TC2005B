@@ -12,6 +12,7 @@ TagManager:
   - bola
   - shuriken
   - paredDebil
+  - Audio
   layers:
   - Default
   - TransparentFX

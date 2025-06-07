@@ -8,6 +8,12 @@ public class ataqueAeterius : MonoBehaviour
     public GameObject plantillaBala;
     public float cooldownAtaque = 1f;
     private float tiempoSiguienteAtaque = 0f;
+    controladorAudio controladorAudio;
+
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+    }
 
     public void Update()
     {
@@ -24,6 +30,7 @@ public class ataqueAeterius : MonoBehaviour
     void Attack()
     {
         GameObject bala = Instantiate(plantillaBala, puntoDisparo.position, Quaternion.identity);
+        controladorAudio.PlaySFX(controladorAudio.Shuriken);
         Shuriken scriptBala = bala.GetComponent<Shuriken>();
 
         float dirX = transform.localScale.x > 0 ? 1f : -1f;

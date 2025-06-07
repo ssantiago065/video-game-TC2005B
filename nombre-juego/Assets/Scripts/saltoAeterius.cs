@@ -20,8 +20,12 @@ public class saltoAeterius : MonoBehaviour
     private float tiempoWallJump = 1f;
     private float contadorWallJump;
     private Vector2 fuerzaWallJump = new Vector2(20f, 25f);
+    controladorAudio controladorAudio;
 
-
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+    }
 
     void Start()
     {
@@ -75,6 +79,7 @@ public class saltoAeterius : MonoBehaviour
         if (isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            controladorAudio.PlaySFX(controladorAudio.Salto);
             isGrounded = false;
         }
         else
@@ -88,7 +93,8 @@ public class saltoAeterius : MonoBehaviour
         if (cooldownSalto && !isWalled())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            //cooldownSalto = false;
+            controladorAudio.PlaySFX(controladorAudio.dobleSalto);
+            cooldownSalto = false;
         }
     }
 
