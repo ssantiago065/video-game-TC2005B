@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 [System.Serializable]
 public class datosGuardado
@@ -9,6 +7,7 @@ public class datosGuardado
     public int personajeActivo;
     public bool cooldownD;
     public bool cooldownJ;
-    //public string mapBoundary;
-    //public int vidaJugador;
+
+    public int indiceNivel;       // Cambiado de string a int
+    public float vidaActual;
 }

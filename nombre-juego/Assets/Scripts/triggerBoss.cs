@@ -16,12 +16,10 @@ public class triggerBoss : MonoBehaviour
 
     IEnumerator FinPartidaConFade()
     {
-        // Fade to black
         yield return controlador.StartCoroutine(controlador.Fade(0f, 1f));
 
-        yield return new WaitForSeconds(0.5f); // opcional, dramatismo
+        yield return new WaitForSeconds(0.5f);
 
-        // Cargar escena del menú (índice 0)
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageZone : MonoBehaviour
+public class dañoDron : MonoBehaviour
 {
     private logicaDron dron;
 

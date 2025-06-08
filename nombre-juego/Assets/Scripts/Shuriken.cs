@@ -10,7 +10,7 @@ public class Shuriken : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = direccion.normalized * velocidad;  // Nota: es velocity, no linearVelocity
+        rb.linearVelocity = direccion.normalized * velocidad;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

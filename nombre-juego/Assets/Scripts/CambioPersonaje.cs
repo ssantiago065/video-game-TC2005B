@@ -94,7 +94,7 @@ public class CambioPersonaje : MonoBehaviour
         Rigidbody2D nuevoCuerpo = listaPersonajes[indice].GetComponent<Rigidbody2D>();
         if (nuevoCuerpo != null)
             nuevoCuerpo.linearVelocity = velocidadActual;
-        
+
         RaycastHit2D impacto = Physics2D.Raycast(listaPersonajes[indice].transform.position, Vector2.down, 0.1f, LayerMask.GetMask("Suelo"));
 
         // Asignar isGrounded segun el resultado
@@ -106,5 +106,10 @@ public class CambioPersonaje : MonoBehaviour
         {
             scriptAeterius.isGrounded = impacto.collider != null;
         }
+    }
+    
+    public Transform ObtenerPersonajeActivo()
+    {
+        return listaPersonajes[indice].transform;
     }
 }

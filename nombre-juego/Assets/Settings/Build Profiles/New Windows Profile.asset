@@ -23,6 +23,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/Menu Principal.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/Pandora 1.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/Pandora.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Final.unity

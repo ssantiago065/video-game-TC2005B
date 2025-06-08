@@ -36,7 +36,7 @@ public class ataqueSolaris : MonoBehaviour
         bool golpeoEnemigo = false;
         foreach (Collider2D zona in zonasGolpeadas)
         {
-            DamageZone damageZone = zona.GetComponent<DamageZone>();
+            dañoDron damageZone = zona.GetComponent<dañoDron>();
             if (damageZone != null)
             {
                 damageZone.RecibirGolpe();
@@ -45,7 +45,6 @@ public class ataqueSolaris : MonoBehaviour
             }
         }
 
-        // Solo reproducir sonido si golpeó y no está haciendo dash
         if (golpeoEnemigo && (movimientoS == null || !movimientoS.isDashing))
         {
             controladorAudio.PlaySFX(controladorAudio.Golpe);

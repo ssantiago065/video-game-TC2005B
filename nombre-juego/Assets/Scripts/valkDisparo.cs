@@ -1,37 +1,33 @@
 using UnityEngine;
 
-public class valkDisparo : MonoBehaviour
+public class EnemyShooter : MonoBehaviour
 {
-    public GameObject bala;
-    public Transform posBala;
-    private float timer;
+    public GameObject balaPrefab;
+    public Transform puntoDisparo;
+    public CambioPersonaje cambioPersonaje; // referencia al script en ListaPersonajes
+    public float tiempoEntreDisparos = 2f;
 
-    void Start()
-    {
+    private float temporizador;
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer > 2)
+        temporizador += Time.deltaTime;
+        if (temporizador >= tiempoEntreDisparos)
         {
-            timer = 0;
-            Disparo();
+            Disparar();
+            temporizador = 0f;
         }
     }
 
-    void Disparo()
+    void Disparar()
     {
-        if (bala != null && posBala != null)
-        {
-            Instantiate(bala, posBala.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("bala o posBala no asignados en el inspector.");
-        }
+        if (cambioPersonaje == null) return;
+
+        Transform objetivo = cambioPersonaje.ObtenerPersonajeActivo();
+        if (objetivo == null) return;
+
+        GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, Quaternion.identity);
+        Vector2 direccion = objetivo.position - puntoDisparo.position;
+        bala.GetComponent<Bullet>().SetDireccion(direccion);
     }
 }

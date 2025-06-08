@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class controlGuardado : MonoBehaviour
 {
@@ -38,23 +39,25 @@ public class controlGuardado : MonoBehaviour
         }
 
         CambioPersonaje cambioPersonajeScript = padre.GetComponent<CambioPersonaje>();
+        Vida vidaScript = hijoActivo.GetComponent<Vida>();
 
         datosGuardado datos = new datosGuardado
         {
             posicionJugador = hijoActivo.position,
-            personajeActivo = cambioPersonajeScript != null ? cambioPersonajeScript.IndicePersonajeActivo : 0
+            personajeActivo = cambioPersonajeScript != null ? cambioPersonajeScript.IndicePersonajeActivo : 0,
+            indiceNivel = SceneManager.GetActiveScene().buildIndex,
+            vidaActual = vidaScript != null ? vidaScript.GetCurrentHealth() : 100f
         };
 
         string json = JsonUtility.ToJson(datos, true);
         File.WriteAllText(saveLocation, json);
 
-        Debug.Log("Juego guardado en: " + saveLocation);
-        Debug.Log("Posición guardada: " + datos.posicionJugador + " Personaje activo: " + datos.personajeActivo);
+        Debug.Log($"Guardado: nivel {datos.indiceNivel}, personaje {datos.personajeActivo}, vida {datos.vidaActual}");
     }
 
     IEnumerator CargarJuegoLuegoDeUnFrame()
     {
-        yield return null; // Espera un frame para que otros scripts hayan inicializado
+        yield return null;
 
         if (!File.Exists(saveLocation))
         {
@@ -66,6 +69,12 @@ public class controlGuardado : MonoBehaviour
         string json = File.ReadAllText(saveLocation);
         datosGuardado datos = JsonUtility.FromJson<datosGuardado>(json);
 
+        if (SceneManager.GetActiveScene().buildIndex != datos.indiceNivel)
+        {
+            SceneManager.LoadScene(datos.indiceNivel);
+            yield break;
+        }
+
         GameObject padre = GameObject.FindGameObjectWithTag("jugador");
         if (padre == null)
         {
@@ -74,17 +83,14 @@ public class controlGuardado : MonoBehaviour
         }
 
         CambioPersonaje cambioPersonajeScript = padre.GetComponent<CambioPersonaje>();
-
         if (cambioPersonajeScript != null)
         {
             cambioPersonajeScript.CambiarPersonajePorIndice(datos.personajeActivo);
             Debug.Log("Personaje cambiado al índice: " + datos.personajeActivo);
         }
 
-        // Esperar un frame más para que se active el personaje correcto
         yield return null;
 
-        // Mover al hijo activo
         Transform hijoActivo = null;
         foreach (Transform hijo in padre.transform)
         {
@@ -97,7 +103,14 @@ public class controlGuardado : MonoBehaviour
 
         if (hijoActivo != null)
         {
-            //hijoActivo.position = datos.posicionJugador;
+            hijoActivo.position = datos.posicionJugador;
+            Vida vidaScript = hijoActivo.GetComponent<Vida>();
+            if (vidaScript != null)
+            {
+                vidaScript.SetCurrentHealth(datos.vidaActual);
+                Debug.Log("Vida cargada: " + datos.vidaActual);
+            }
+
             Debug.Log("Posición cargada: " + datos.posicionJugador);
         }
         else

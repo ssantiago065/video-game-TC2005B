@@ -7,6 +7,7 @@ public class bolaPlasma : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D col;
+    public float damageToPlayer = 10f;
 
     void Start()
     {
@@ -35,6 +36,11 @@ public class bolaPlasma : MonoBehaviour
         if (other.CompareTag("jugador"))
         {
             Debug.Log("Jugador golpeado");
+            Vida playerHealth = other.GetComponent<Vida>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damageToPlayer);
+            }
             Destroy(gameObject);
         }
         else if (other.CompareTag("suelo") || other.CompareTag("pared") || other.CompareTag("techo"))
