@@ -16,6 +16,8 @@ public class Vida : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (EstadoJugador.esInvencible) return;
+
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthBar();
@@ -35,17 +37,15 @@ public class Vida : MonoBehaviour
     public void Die()
     {
         Time.timeScale = 0f;
+        MenuPausa.EsGameOver = true;
 
-        GameOverAlpha pantallaGO = FindFirstObjectByType<GameOverAlpha>();
+        FotoGameOver pantallaGO = FindFirstObjectByType<FotoGameOver>();
         if (pantallaGO != null)
         {
             pantallaGO.Mostrar();
         }
 
-        foreach (CambioPersonaje cambio in FindObjectsByType<CambioPersonaje>(FindObjectsSortMode.None))
-        {
-            cambio.gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false); 
     }
 
     public float GetCurrentHealth() => currentHealth;

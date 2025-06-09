@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class FinalEscena : MonoBehaviour
 {
-    public float tiempoAntesDeSalir = 5f; // Tiempo en segundos antes de volver al menú
+    public float tiempoAntesDeSalir = 5f;
 
     void Start()
     {
@@ -12,6 +12,6 @@ public class FinalEscena : MonoBehaviour
 
     void IrAlMenuPrincipal()
     {
-        SceneManager.LoadScene(0); // Asume que el menú es la escena 0
+        SceneManager.LoadScene(0);
     }
 }

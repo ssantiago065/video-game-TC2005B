@@ -1,13 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class MenuPausa : MonoBehaviour
 {
     public static bool JuegoPausado = false;
+    public static bool EsGameOver = false; 
+
     public GameObject menuPausaUI;
+    public GameObject menuOpcionesUI;
 
     void Update()
     {
+        if (EsGameOver) return; 
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (JuegoPausado)
@@ -24,6 +28,7 @@ public class MenuPausa : MonoBehaviour
     public void Resumir()
     {
         menuPausaUI.SetActive(false);
+        menuOpcionesUI.SetActive(false);
         Time.timeScale = 1f;
         JuegoPausado = false;
     }

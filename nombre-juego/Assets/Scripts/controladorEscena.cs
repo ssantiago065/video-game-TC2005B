@@ -9,6 +9,7 @@ public class controladorEscena : MonoBehaviour
     public GameObject paredesFaseFinal;
     public Image pantallaFade;
     public float duracionFade = 1.5f;
+
     private bool etapa2Iniciada = false;
     private bool etapa3Iniciada = false;
 
@@ -28,6 +29,20 @@ public class controladorEscena : MonoBehaviour
 
     IEnumerator FadeEntreFases(GameObject grupoPrincipal, GameObject grupoExtra)
     {
+        EstadoJugador.esInvencible = true;
+        EstadoJugador.inputBloqueado = true;
+
+        CambioPersonaje cambio = FindFirstObjectByType<CambioPersonaje>();
+        if (cambio != null)
+        {
+            Transform personaje = cambio.ObtenerPersonajeActivo();
+            Rigidbody2D rb = personaje.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
+        }
+
         yield return StartCoroutine(Fade(0f, 1f));
 
         if (grupoPrincipal != null)
@@ -39,23 +54,37 @@ public class controladorEscena : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         yield return StartCoroutine(Fade(1f, 0f));
+
+        EstadoJugador.esInvencible = false;
+        EstadoJugador.inputBloqueado = false;
     }
 
     public IEnumerator Fade(float from, float to)
     {
+        if (pantallaFade == null)
+        {
+            Debug.LogError("⚠️ pantallaFade no asignada");
+            yield break;
+        }
+
         float t = 0f;
         while (t < duracionFade)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(from, to, t / duracionFade);
+
             Color color = pantallaFade.color;
             color.a = alpha;
             pantallaFade.color = color;
+
             yield return null;
         }
 
         Color finalColor = pantallaFade.color;
         finalColor.a = to;
         pantallaFade.color = finalColor;
+
+        Debug.Log("✅ Terminado fade correctamente");
     }
+
 }

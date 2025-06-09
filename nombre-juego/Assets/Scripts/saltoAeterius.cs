@@ -35,6 +35,11 @@ public class saltoAeterius : MonoBehaviour
 
     void Update()
     {
+        if (EstadoJugador.inputBloqueado)
+        {
+            moveInput.x = 0f;
+            return;
+        }
         moveInput.x = Input.GetAxis("Horizontal");
         //moveInput.y = Input.GetAxis("Vertical");
 

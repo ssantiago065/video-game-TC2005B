@@ -9,12 +9,11 @@ public class transicion : MonoBehaviour
 
     void Start()
     {
-        // Empieza con la imagen invisible si quieres
         SetAlpha(0f);
     }
 
-    public void FadeIn() => StartCoroutine(Fade(1f));  // oscurecer
-    public void FadeOut() => StartCoroutine(Fade(0f)); // desaparecer
+    public void FadeIn() => StartCoroutine(Fade(1f));  
+    public void FadeOut() => StartCoroutine(Fade(0f));
 
     IEnumerator Fade(float alphaFinal)
     {

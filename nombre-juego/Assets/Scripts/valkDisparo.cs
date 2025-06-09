@@ -4,7 +4,7 @@ public class EnemyShooter : MonoBehaviour
 {
     public GameObject balaPrefab;
     public Transform puntoDisparo;
-    public CambioPersonaje cambioPersonaje; // referencia al script en ListaPersonajes
+    public CambioPersonaje cambioPersonaje;
     public float tiempoEntreDisparos = 2f;
 
     private float temporizador;

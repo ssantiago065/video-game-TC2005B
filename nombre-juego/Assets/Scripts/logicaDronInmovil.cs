@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class logicaDronInmovil : MonoBehaviour
 {
-    // --- Ataque ---
+
     public Transform puntoDisparo;
     public GameObject plantillaBala;
     private float cooldownAtaque = 5f;
@@ -22,10 +22,10 @@ public class logicaDronInmovil : MonoBehaviour
     void DronArribaAttack()
     {
         int cantidadBalas = 3;
-        float anguloCentro = -90f;               // Centro hacia abajo
-        float separacionAngulo = 10f;            // Ángulo entre cada bala
+        float anguloCentro = -90f;              
+        float separacionAngulo = 10f;           
 
-        float anguloInicial = anguloCentro - separacionAngulo; // = -100°
+        float anguloInicial = anguloCentro - separacionAngulo;
         
         for (int i = 0; i < cantidadBalas; i++)
         {

@@ -8,6 +8,6 @@ public class datosGuardado
     public bool cooldownD;
     public bool cooldownJ;
 
-    public int indiceNivel;       // Cambiado de string a int
+    public int indiceNivel;
     public float vidaActual;
 }

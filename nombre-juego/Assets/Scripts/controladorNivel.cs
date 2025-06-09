@@ -5,7 +5,7 @@ using System.Collections;
 
 public class controladorNivel : MonoBehaviour
 {
-    public Image pantallaFade; // Imagen negra para el fade
+    public Image pantallaFade; 
     public float duracionFade = 1.5f;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,12 +18,11 @@ public class controladorNivel : MonoBehaviour
 
     IEnumerator FinPartidaConFade()
     {
-        // Hacer el fade a negro
+
         yield return StartCoroutine(Fade(0f, 1f));
 
-        yield return new WaitForSeconds(0.5f); // pausa opcional
+        yield return new WaitForSeconds(0.5f);
 
-        // Cargar la escena final
         SceneManager.LoadScene(2);
     }
 
@@ -40,7 +39,6 @@ public class controladorNivel : MonoBehaviour
             yield return null;
         }
 
-        // Ajustar alpha al valor final exacto
         Color finalColor = pantallaFade.color;
         finalColor.a = to;
         pantallaFade.color = finalColor;

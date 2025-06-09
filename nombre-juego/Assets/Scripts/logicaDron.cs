@@ -99,8 +99,8 @@ public class logicaDron : MonoBehaviour
         if (detenido) return;
 
         int cantidadBalas = 3;
-        float anguloInicial = -10f;           // primer bala: -10°
-        float separacionAngulo = 10f;         // siguiente bala: +10°
+        float anguloInicial = -10f;           
+        float separacionAngulo = 10f;        
 
         for (int i = 0; i < cantidadBalas; i++)
         {

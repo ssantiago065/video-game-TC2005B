@@ -1,31 +1,44 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-public class GameOverAlpha : MonoBehaviour
+public class FotoGameOver : MonoBehaviour
 {
-    public Image fondo;
-    public float velocidad = 1f;
-    private bool activar = false;
-
-    void Start()
-    {
-        Color color = fondo.color;
-        color.a = 0f;
-        fondo.color = color;
-    }
-
-    void Update()
-    {
-        if (activar && fondo.color.a < 1f)
-        {
-            Color color = fondo.color;
-            color.a += Time.unscaledDeltaTime * velocidad;
-            fondo.color = color;
-        }
-    }
+    public Image imagenGameOver;
+    public float duracionFade = 1.5f;
+    public GameObject contenedorBotones;
 
     public void Mostrar()
     {
-        activar = true;
+        if (imagenGameOver == null) return;
+
+        gameObject.SetActive(true);
+        imagenGameOver.gameObject.SetActive(true);
+        if (contenedorBotones != null)
+            contenedorBotones.SetActive(true);
+
+        StartCoroutine(FadeIn());
+    }
+
+    IEnumerator FadeIn()
+    {
+        float t = 0f;
+        Color colorOriginal = imagenGameOver.color;
+        colorOriginal.a = 0f;
+        imagenGameOver.color = colorOriginal;
+
+        while (t < duracionFade)
+        {
+            t += Time.unscaledDeltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, t / duracionFade);
+            Color nuevoColor = imagenGameOver.color;
+            nuevoColor.a = alpha;
+            imagenGameOver.color = nuevoColor;
+            yield return null;
+        }
+
+        Color finalColor = imagenGameOver.color;
+        finalColor.a = 1f;
+        imagenGameOver.color = finalColor;
     }
 }

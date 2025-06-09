@@ -37,11 +37,9 @@ public class bolaPlasma : MonoBehaviour
         {
             Debug.Log("Jugador golpeado");
 
-            // Obtener el multiplicador de daño del personaje golpeado
             ModificadorDaño mod = other.GetComponent<ModificadorDaño>();
             float multiplicador = (mod != null) ? mod.multiplicadorDaño : 1f;
 
-            // Obtener la vida compartida desde el padre
             Vida vidaJugador = other.GetComponentInParent<Vida>();
             if (vidaJugador != null)
             {

@@ -55,9 +55,18 @@ public class ataqueSolaris : MonoBehaviour
         {
             if (pared.CompareTag("paredDebil"))
             {
-                Debug.Log("Pared destruida antes del impacto");
-                controladorAudio.PlaySFX(controladorAudio.paredRota);
-                Destroy(pared.gameObject);
+                TriggerRompible trigger = pared.GetComponent<TriggerRompible>();
+                if (trigger != null)
+                {
+                    Debug.Log("Activando trigger especial con golpe de Solaris");
+                    trigger.Activar();
+                }
+                else
+                {
+                    Debug.Log("Pared débil normal destruida");
+                    controladorAudio.PlaySFX(controladorAudio.paredRota);
+                    Destroy(pared.gameObject);
+                }
             }
         }
     }
