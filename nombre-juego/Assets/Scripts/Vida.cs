@@ -32,18 +32,24 @@ public class Vida : MonoBehaviour
             healthSlider.value = currentHealth / maxHealth;
     }
 
-    void Die()
+    public void Die()
     {
-        Destroy(gameObject);
+        Time.timeScale = 0f;
+
+        GameOverAlpha pantallaGO = FindFirstObjectByType<GameOverAlpha>();
+        if (pantallaGO != null)
+        {
+            pantallaGO.Mostrar();
+        }
+
+        foreach (CambioPersonaje cambio in FindObjectsByType<CambioPersonaje>(FindObjectsSortMode.None))
+        {
+            cambio.gameObject.SetActive(false);
+        }
     }
 
-    // Getter público
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
-    }
+    public float GetCurrentHealth() => currentHealth;
 
-    // Setter público
     public void SetCurrentHealth(float value)
     {
         currentHealth = Mathf.Clamp(value, 0, maxHealth);

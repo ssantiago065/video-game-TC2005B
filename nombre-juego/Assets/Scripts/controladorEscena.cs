@@ -16,22 +16,29 @@ public class controladorEscena : MonoBehaviour
     {
         if (etapa2Iniciada) return;
         etapa2Iniciada = true;
-        StartCoroutine(FadeEntreFases());
-        grupoDrones2.SetActive(true);
+        StartCoroutine(FadeEntreFases(grupoDrones2, null));
     }
+
     public void ActivarEtapa3()
     {
         if (etapa3Iniciada) return;
         etapa3Iniciada = true;
-        StartCoroutine(FadeEntreFases());
-        grupoDrones3.SetActive(true);
-        paredesFaseFinal.SetActive(true);
+        StartCoroutine(FadeEntreFases(grupoDrones3, paredesFaseFinal));
     }
-    IEnumerator FadeEntreFases()
+
+    IEnumerator FadeEntreFases(GameObject grupoPrincipal, GameObject grupoExtra)
     {
-        yield return StartCoroutine(Fade(0f, 1f)); // Fade to black
-        yield return new WaitForSeconds(0.3f); // tiempo opcional para efecto dramático
-        yield return StartCoroutine(Fade(1f, 0f)); // Fade out (mostrar escena)
+        yield return StartCoroutine(Fade(0f, 1f));
+
+        if (grupoPrincipal != null)
+            grupoPrincipal.SetActive(true);
+
+        if (grupoExtra != null)
+            grupoExtra.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f);
+
+        yield return StartCoroutine(Fade(1f, 0f));
     }
 
     public IEnumerator Fade(float from, float to)
@@ -47,7 +54,6 @@ public class controladorEscena : MonoBehaviour
             yield return null;
         }
 
-        // asegurar que llegue al valor final exacto
         Color finalColor = pantallaFade.color;
         finalColor.a = to;
         pantallaFade.color = finalColor;

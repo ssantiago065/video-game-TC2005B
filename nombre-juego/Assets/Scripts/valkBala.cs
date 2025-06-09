@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     {
         direccion = dir.normalized;
 
-        // Rotar el sprite hacia la dirección de movimiento
         float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angulo);
     }
@@ -20,21 +19,28 @@ public class Bullet : MonoBehaviour
         transform.Translate(direccion * velocidad * Time.deltaTime, Space.World);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("jugador"))
         {
-            Vida vidaJugador = other.GetComponent<Vida>();
+            Debug.Log("Jugador golpeado");
+
+            // Obtener el multiplicador de daño del personaje golpeado
+            ModificadorDaño mod = other.GetComponent<ModificadorDaño>();
+            float multiplicador = (mod != null) ? mod.multiplicadorDaño : 1f;
+
+            // Obtener la vida compartida desde el padre
+            Vida vidaJugador = other.GetComponentInParent<Vida>();
             if (vidaJugador != null)
             {
-                vidaJugador.TakeDamage(damageToPlayer);
+                vidaJugador.TakeDamage(10f * multiplicador);
             }
+
             Destroy(gameObject);
         }
-        else if (other.CompareTag("limites"))
+        else if (other.CompareTag("suelo") || other.CompareTag("pared") || other.CompareTag("techo"))
         {
             Destroy(gameObject);
         }
     }
-
 }

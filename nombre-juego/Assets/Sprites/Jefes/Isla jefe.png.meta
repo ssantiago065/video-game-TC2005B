@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 9fcbb2117c517394b80febd4e371f893
+guid: 736578f20b880b74992d4db76d245932
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4442361059960253265
-    second: pexels-padrinan-255379_0
+      213: 2617474298117156092
+    second: Isla jefe_0
+  - first:
+      213: -673761866726320854
+    second: Isla jefe_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pexels-padrinan-255379_0
+      name: Isla jefe_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 6016
-        height: 4000
+        x: 138
+        y: 103
+        width: 325
+        height: 305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa49a0117209952c0800000000000000
-      internalID: -4442361059960253265
+      spriteID: cfcecf39103235420800000000000000
+      internalID: 2617474298117156092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Isla jefe_1
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 87
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a25d296e62156a6f0800000000000000
+      internalID: -673761866726320854
       vertices: []
       indices: 
       edges: []
@@ -134,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pexels-padrinan-255379_0: -4442361059960253265
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

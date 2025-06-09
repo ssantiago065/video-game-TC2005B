@@ -14,6 +14,7 @@ TagManager:
   - paredDebil
   - Audio
   - Limites
+  - Zona Muerte
   layers:
   - Default
   - TransparentFX

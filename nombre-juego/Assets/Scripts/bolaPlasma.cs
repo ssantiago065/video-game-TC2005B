@@ -36,11 +36,18 @@ public class bolaPlasma : MonoBehaviour
         if (other.CompareTag("jugador"))
         {
             Debug.Log("Jugador golpeado");
-            Vida playerHealth = other.GetComponent<Vida>();
-            if (playerHealth != null)
+
+            // Obtener el multiplicador de daño del personaje golpeado
+            ModificadorDaño mod = other.GetComponent<ModificadorDaño>();
+            float multiplicador = (mod != null) ? mod.multiplicadorDaño : 1f;
+
+            // Obtener la vida compartida desde el padre
+            Vida vidaJugador = other.GetComponentInParent<Vida>();
+            if (vidaJugador != null)
             {
-                playerHealth.TakeDamage(damageToPlayer);
+                vidaJugador.TakeDamage(10f * multiplicador);
             }
+
             Destroy(gameObject);
         }
         else if (other.CompareTag("suelo") || other.CompareTag("pared") || other.CompareTag("techo"))
