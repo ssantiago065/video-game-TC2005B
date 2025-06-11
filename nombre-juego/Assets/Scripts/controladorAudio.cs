@@ -9,7 +9,6 @@ public class controladorAudio : MonoBehaviour
     [Header("------------ Audio Clip ----------------")]
     public AudioClip dobleSalto;
     public AudioClip Shuriken;
-    public AudioClip wallJump;
     public AudioClip Dash;
     public AudioClip Golpe;
     public AudioClip Cambio;
@@ -17,7 +16,6 @@ public class controladorAudio : MonoBehaviour
     public AudioClip dmgRecibido;
     public AudioClip muerte;
     public AudioClip nivelFinalizado;
-    public AudioClip dmgEnemigos;
     public AudioClip paredRota;
     public AudioClip Salto;
 

@@ -920,16 +920,14 @@ MonoBehaviour:
   fuenteMusica: {fileID: 1039233551}
   fuenteSFX: {fileID: 1318245977}
   dobleSalto: {fileID: 8300000, guid: c8238ff36a494b94c938fda5a0427642, type: 3}
-  Shuriken: {fileID: 8300000, guid: 0aed59d9739422f4d828361998516054, type: 3}
-  wallJump: {fileID: 0}
+  Shuriken: {fileID: 8300000, guid: 191d0e0413fc7c4498794f3e4903faae, type: 3}
   Dash: {fileID: 8300000, guid: ed31f85c17f2e4648aa376f0d3b30750, type: 3}
   Golpe: {fileID: 8300000, guid: 0a7d09474bdaa0f40a59125ad991ce8a, type: 3}
-  Cambio: {fileID: 0}
+  Cambio: {fileID: 8300000, guid: 23052ff339207ad4fb5bdc6159864af4, type: 3}
   musicaNivel: {fileID: 8300000, guid: 8068b1532caea824597c2b5b8600be8e, type: 3}
   dmgRecibido: {fileID: 8300000, guid: 47464aa4543629c4ea578ae13dc9d402, type: 3}
-  muerte: {fileID: 0}
+  muerte: {fileID: 8300000, guid: 2873ee5829859f948b60d2560bb3beb9, type: 3}
   nivelFinalizado: {fileID: 8300000, guid: c6a23a0a81d44bb4ea08fad5b1e60a7b, type: 3}
-  dmgEnemigos: {fileID: 8300000, guid: 7e80099cbb3c8ca44af68f341436498f, type: 3}
   paredRota: {fileID: 8300000, guid: 6edd877525be6954ab7aeb1c46df328a, type: 3}
   Salto: {fileID: 8300000, guid: b20817397bab8d24897b8777717e2d8f, type: 3}
 --- !u!4 &205810466
@@ -1269,7 +1267,7 @@ GameObject:
   - component: {fileID: 343655439}
   - component: {fileID: 343655438}
   - component: {fileID: 343655437}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Pared I
   m_TagString: Limites
   m_Icon: {fileID: 0}
@@ -1386,7 +1384,7 @@ Transform:
   m_GameObject: {fileID: 343655436}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.8906, y: 9.103, z: -5.872555}
+  m_LocalPosition: {x: 7.27, y: 9.27, z: -5.872555}
   m_LocalScale: {x: -1.9341294, y: 27.952154, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4716,7 +4714,7 @@ GameObject:
   - component: {fileID: 1092326504}
   - component: {fileID: 1092326506}
   - component: {fileID: 1092326505}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Pared D
   m_TagString: Limites
   m_Icon: {fileID: 0}
@@ -4732,7 +4730,7 @@ Transform:
   m_GameObject: {fileID: 1092326503}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.5031, y: 9.264, z: -5.872555}
+  m_LocalPosition: {x: -41.22, y: 9.35, z: -5.872555}
   m_LocalScale: {x: 1.3260202, y: 27.500902, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7282,7 +7280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 40
+  jumpForce: 18
   isGrounded: 0
   cooldownSalto: 0
   solaris: {fileID: 610804521}

@@ -7,11 +7,18 @@ public class controladorNivel : MonoBehaviour
 {
     public Image pantallaFade; 
     public float duracionFade = 1.5f;
+    controladorAudio controladorAudio;
+
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("jugador"))
         {
+            controladorAudio.PlaySFX(controladorAudio.nivelFinalizado);
             StartCoroutine(FinPartidaConFade());
         }
     }

@@ -165,5 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9b85cd6835b04ea865ef8fb411cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 10
+  velocidad: 15
   direccion: {x: 1, y: 0}
+  damageToPlayer: 10

@@ -4,7 +4,7 @@ using System.Collections;
 public class logicaDron : MonoBehaviour
 {
     private float tiempoEspera = 19f;
-    private float distancia = 50f;
+    private float distancia = 40f;
     private float duracionMovimiento = 10f;
 
     public Transform puntoDisparo;

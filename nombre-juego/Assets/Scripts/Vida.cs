@@ -7,6 +7,12 @@ public class Vida : MonoBehaviour
     private float currentHealth;
 
     public Slider healthSlider;
+    controladorAudio controladorAudio;
+
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+    }
 
     void Start()
     {
@@ -18,6 +24,7 @@ public class Vida : MonoBehaviour
     {
         if (EstadoJugador.esInvencible) return;
 
+        controladorAudio.PlaySFX(controladorAudio.dmgRecibido);
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthBar();
@@ -36,6 +43,7 @@ public class Vida : MonoBehaviour
 
     public void Die()
     {
+        controladorAudio.PlaySFX(controladorAudio.muerte);
         Time.timeScale = 0f;
         MenuPausa.EsGameOver = true;
 

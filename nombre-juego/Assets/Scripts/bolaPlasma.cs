@@ -48,7 +48,7 @@ public class bolaPlasma : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if (other.CompareTag("suelo") || other.CompareTag("pared") || other.CompareTag("techo"))
+        else if (other.CompareTag("suelo") || other.CompareTag("pared") || other.CompareTag("techo") || other.CompareTag("Limites"))
         {
             Destroy(gameObject);
         }

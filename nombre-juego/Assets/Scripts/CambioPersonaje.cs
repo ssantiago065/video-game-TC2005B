@@ -7,6 +7,12 @@ public class CambioPersonaje : MonoBehaviour
     private bool isGrounded;
     float[] ajustesAltura = new float[] { 0f, 0.4f };
     public int IndicePersonajeActivo => indice;
+    controladorAudio controladorAudio;
+
+    private void Awake()
+    {
+        controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+    }
 
     public void CambiarPersonajePorIndice(int nuevoIndice)
     {
@@ -45,6 +51,7 @@ public class CambioPersonaje : MonoBehaviour
 
     public void cambioPersonaje()
     {
+        controladorAudio.PlaySFX(controladorAudio.Cambio);
         Rigidbody2D cuerpoActual = listaPersonajes[indice].GetComponent<Rigidbody2D>();
 
         Vector3 posicionActual = listaPersonajes[indice].transform.position;
