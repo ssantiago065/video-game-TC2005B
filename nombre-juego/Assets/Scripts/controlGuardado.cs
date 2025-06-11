@@ -10,7 +10,7 @@ public class controlGuardado : MonoBehaviour
     void Start()
     {
         saveLocation = Path.Combine(Application.persistentDataPath, "datosGuardado.json");
-        //StartCoroutine(CargarJuegoLuegoDeUnFrame());
+        StartCoroutine(CargarJuegoLuegoDeUnFrame());
     }
 
     public void guardarJuego()
