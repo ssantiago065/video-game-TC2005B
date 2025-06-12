@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 43534475}
   m_Layer: 8
   m_Name: Square (32)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,8 +147,8 @@ Transform:
   m_GameObject: {fileID: 43534473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181, y: 47.55, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalPosition: {x: 181, y: 49, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 950370965}
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 54595315}
   m_Layer: 8
   m_Name: Square (23)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -693,8 +693,8 @@ Transform:
   m_GameObject: {fileID: 143528975}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181, y: 42.08, z: -5.8826227}
-  m_LocalScale: {x: 1, y: 6, z: 1}
+  m_LocalPosition: {x: 181, y: 43.7069, z: -5.8826227}
+  m_LocalScale: {x: 1, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 950370965}
@@ -832,7 +832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: -49.999985}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157735174
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 167706217}
   m_Layer: 8
   m_Name: Square (22)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,7 +1040,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 80}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175978169
@@ -1329,7 +1329,7 @@ GameObject:
   - component: {fileID: 230690834}
   m_Layer: 8
   m_Name: Square (25)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1863,7 +1863,7 @@ GameObject:
   - component: {fileID: 390823716}
   - component: {fileID: 390823715}
   - component: {fileID: 390823714}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (1)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -1984,6 +1984,138 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &396563341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396563342}
+  - component: {fileID: 396563345}
+  - component: {fileID: 396563344}
+  - component: {fileID: 396563343}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &396563342
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396563341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2074960820}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 90}
+  m_SizeDelta: {x: 160, y: 70}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &396563343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396563341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 396563344}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2074960821}
+        m_TargetAssemblyTypeName: MenuOpciones, Assembly-CSharp
+        m_MethodName: BorrarDatosGuardado
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &396563344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396563341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 972864203378089936, guid: 2f9167a95fab38b4986292bb9cd097f2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &396563345
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396563341}
+  m_CullTransparentMesh: 1
 --- !u!1 &417388477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,7 +2701,7 @@ GameObject:
   - component: {fileID: 550568140}
   m_Layer: 8
   m_Name: Square (29)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3358,7 +3490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &624919341
@@ -3375,7 +3507,7 @@ GameObject:
   - component: {fileID: 624919343}
   m_Layer: 8
   m_Name: Square (26)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3581,9 +3713,9 @@ GameObject:
   - component: {fileID: 671257283}
   - component: {fileID: 671257282}
   - component: {fileID: 671257281}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Square (6)
-  m_TagString: suelo
+  m_TagString: techo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4939,7 +5071,7 @@ GameObject:
   - component: {fileID: 1010387365}
   m_Layer: 8
   m_Name: Square (33)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5523,7 +5655,7 @@ GameObject:
   - component: {fileID: 1266178640}
   - component: {fileID: 1266178639}
   - component: {fileID: 1266178638}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (2)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -5948,7 +6080,7 @@ GameObject:
   - component: {fileID: 1350640288}
   m_Layer: 8
   m_Name: Square (5)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6359,7 +6491,7 @@ GameObject:
   - component: {fileID: 1448292340}
   m_Layer: 8
   m_Name: Square (30)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6490,7 +6622,7 @@ GameObject:
   - component: {fileID: 1450267604}
   - component: {fileID: 1450267603}
   - component: {fileID: 1450267602}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (7)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -6887,7 +7019,7 @@ GameObject:
   - component: {fileID: 1565321234}
   - component: {fileID: 1565321233}
   - component: {fileID: 1565321232}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (8)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -7167,7 +7299,7 @@ GameObject:
   - component: {fileID: 1615710301}
   - component: {fileID: 1615710300}
   - component: {fileID: 1615710299}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (28)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -8033,7 +8165,7 @@ GameObject:
   - component: {fileID: 1722372877}
   - component: {fileID: 1722372876}
   - component: {fileID: 1722372875}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (3)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -8610,7 +8742,7 @@ GameObject:
   - component: {fileID: 1792810303}
   - component: {fileID: 1792810302}
   - component: {fileID: 1792810301}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Square (27)
   m_TagString: suelo
   m_Icon: {fileID: 0}
@@ -8779,9 +8911,9 @@ GameObject:
   - component: {fileID: 1900990711}
   - component: {fileID: 1900990710}
   - component: {fileID: 1900990709}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Square (4)
-  m_TagString: suelo
+  m_TagString: techo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9287,7 +9419,7 @@ GameObject:
   - component: {fileID: 2060327611}
   m_Layer: 8
   m_Name: Square (31)
-  m_TagString: suelo
+  m_TagString: pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9441,6 +9573,7 @@ RectTransform:
   - {fileID: 559608378}
   - {fileID: 611488409}
   - {fileID: 2105412089}
+  - {fileID: 396563342}
   m_Father: {fileID: 2091467436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9745,7 +9878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100.2}
+  m_AnchoredPosition: {x: 0, y: -130}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105412090

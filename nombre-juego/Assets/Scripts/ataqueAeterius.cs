@@ -21,7 +21,6 @@ public class ataqueAeterius : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && Time.time >= tiempoSiguienteAtaque)
         {
-            Debug.Log("Disparo");
             Attack();
             tiempoSiguienteAtaque = Time.time + cooldownAtaque;
         }

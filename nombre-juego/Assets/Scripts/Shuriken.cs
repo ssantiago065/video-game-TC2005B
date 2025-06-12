@@ -17,7 +17,6 @@ public class Shuriken : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemigo"))
         {
-            Debug.Log("Enemigo golpeado");
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("suelo") || collision.gameObject.CompareTag("pared") || collision.gameObject.CompareTag("Limites"))

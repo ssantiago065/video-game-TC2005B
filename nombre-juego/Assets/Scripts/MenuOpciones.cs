@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class MenuOpciones : MonoBehaviour
 {
@@ -31,9 +32,14 @@ public class MenuOpciones : MonoBehaviour
         audioControl.CambiarVolumenSFX(valor);
     }
 
-    public void ReiniciarPartida()
+    public void BorrarDatosGuardado()
     {
-        PlayerPrefs.DeleteAll();
+        string savePath = Path.Combine(Application.persistentDataPath, "datosGuardado.json");
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+        }
+
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }

@@ -18,41 +18,35 @@ public class controlGuardado : MonoBehaviour
         GameObject padre = GameObject.FindGameObjectWithTag("jugador");
         if (padre == null)
         {
-            Debug.LogError("No se encontró objeto con tag 'jugador'");
-            return;
-        }
-
-        Transform hijoActivo = null;
-        foreach (Transform hijo in padre.transform)
-        {
-            if (hijo.gameObject.activeSelf)
-            {
-                hijoActivo = hijo;
-                break;
-            }
-        }
-
-        if (hijoActivo == null)
-        {
-            Debug.LogError("No se encontró hijo activo dentro del jugador");
             return;
         }
 
         CambioPersonaje cambioPersonajeScript = padre.GetComponent<CambioPersonaje>();
-        Vida vidaScript = hijoActivo.GetComponent<Vida>();
+        if (cambioPersonajeScript == null)
+        {
+            return;
+        }
+
+        Transform personajeActivo = cambioPersonajeScript.ObtenerPersonajeActivo();
+        if (personajeActivo == null)
+        {
+            return;
+        }
+
+        Vida vidaScript = padre.GetComponent<Vida>();
+        float vida = vidaScript != null ? vidaScript.GetCurrentHealth() : -1f;
 
         datosGuardado datos = new datosGuardado
         {
-            posicionJugador = hijoActivo.position,
-            personajeActivo = cambioPersonajeScript != null ? cambioPersonajeScript.IndicePersonajeActivo : 0,
+            posicionJugador = personajeActivo.position,
+            personajeActivo = cambioPersonajeScript.IndicePersonajeActivo,
             indiceNivel = SceneManager.GetActiveScene().buildIndex,
-            vidaActual = vidaScript != null ? vidaScript.GetCurrentHealth() : 100f
+            vidaActual = vida
         };
 
         string json = JsonUtility.ToJson(datos, true);
         File.WriteAllText(saveLocation, json);
 
-        Debug.Log($"Guardado: nivel {datos.indiceNivel}, personaje {datos.personajeActivo}, vida {datos.vidaActual}");
     }
 
     IEnumerator CargarJuegoLuegoDeUnFrame()
@@ -61,7 +55,6 @@ public class controlGuardado : MonoBehaviour
 
         if (!File.Exists(saveLocation))
         {
-            Debug.Log("Archivo de guardado no existe, guardando estado inicial.");
             guardarJuego();
             yield break;
         }
@@ -78,7 +71,6 @@ public class controlGuardado : MonoBehaviour
         GameObject padre = GameObject.FindGameObjectWithTag("jugador");
         if (padre == null)
         {
-            Debug.LogError("No se encontró objeto con tag 'jugador' para cargar posición");
             yield break;
         }
 
@@ -86,7 +78,6 @@ public class controlGuardado : MonoBehaviour
         if (cambioPersonajeScript != null)
         {
             cambioPersonajeScript.CambiarPersonajePorIndice(datos.personajeActivo);
-            Debug.Log("Personaje cambiado al índice: " + datos.personajeActivo);
         }
 
         yield return null;
@@ -104,18 +95,14 @@ public class controlGuardado : MonoBehaviour
         if (hijoActivo != null)
         {
             hijoActivo.position = datos.posicionJugador;
-            Vida vidaScript = hijoActivo.GetComponent<Vida>();
+
+            Vida vidaScript = padre.GetComponent<Vida>();
             if (vidaScript != null)
             {
                 vidaScript.SetCurrentHealth(datos.vidaActual);
-                Debug.Log("Vida cargada: " + datos.vidaActual);
+                vidaScript.SendMessage("UpdateHealthBar", SendMessageOptions.DontRequireReceiver);
             }
 
-            Debug.Log("Posición cargada: " + datos.posicionJugador);
-        }
-        else
-        {
-            Debug.LogError("No se encontró hijo activo después de cambiar personaje.");
         }
     }
 }

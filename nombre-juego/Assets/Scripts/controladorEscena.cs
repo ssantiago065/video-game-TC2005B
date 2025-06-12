@@ -63,7 +63,6 @@ public class controladorEscena : MonoBehaviour
     {
         if (pantallaFade == null)
         {
-            Debug.LogError("⚠️ pantallaFade no asignada");
             yield break;
         }
 
@@ -84,7 +83,6 @@ public class controladorEscena : MonoBehaviour
         finalColor.a = to;
         pantallaFade.color = finalColor;
 
-        Debug.Log("✅ Terminado fade correctamente");
     }
 
 }

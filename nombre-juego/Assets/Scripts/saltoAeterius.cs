@@ -1,12 +1,12 @@
-using UnityEngine; //libreria necesaria para usar scripts en unity
+using UnityEngine;
 
 public class saltoAeterius : MonoBehaviour
 {
-    public float speed = 5f; //velocidad de movimiento del personaje punto flotante
-    public float jumpForce = 4f; // cantidad de fuerza del salto
+    public float speed = 5f;
+    public float jumpForce = 4f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    public bool isGrounded; //bandera para saber si está en el piso.
+    public bool isGrounded;
     public bool cooldownSalto = true;
     private SpriteRenderer spriteRenderer;
     private bool orientaDer = true;
@@ -29,7 +29,7 @@ public class saltoAeterius : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -41,9 +41,7 @@ public class saltoAeterius : MonoBehaviour
             return;
         }
         moveInput.x = Input.GetAxis("Horizontal");
-        //moveInput.y = Input.GetAxis("Vertical");
 
-        // Detectar salto con barra espaciadora o clic del mouse
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -79,7 +77,7 @@ public class saltoAeterius : MonoBehaviour
         transform.localScale = scale;
     }
 
-    void Jump() //cambio de bandera para verificar que esta en el suelo
+    void Jump()
     {
         if (isGrounded)
         {
@@ -158,7 +156,6 @@ public class saltoAeterius : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verificar si el personaje está tocando el suelo
         if (collision.gameObject.CompareTag("suelo") || collision.gameObject.CompareTag("enemigo"))
         {
             isGrounded = true;

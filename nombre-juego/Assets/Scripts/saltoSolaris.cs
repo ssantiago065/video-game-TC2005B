@@ -1,14 +1,14 @@
-using UnityEngine; //libreria necesaria para usar scripts en unity
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class saltoSolaris : MonoBehaviour
 {
-    public float speed = 5f; //velocidad de movimiento del personaje punto flotante
-    public float jumpForce = 4f; // cantidad de fuerza del salto
+    public float speed = 5f;
+    public float jumpForce = 4f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    public bool isGrounded; //bandera para saber si está en el piso.
+    public bool isGrounded;
     public bool cooldownDash = true;
     private float fuerzaDash = 20f;
     private float duracionDash = 0.5f;
@@ -30,7 +30,7 @@ public class saltoSolaris : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); //variable que almacena un rigibody
+        rb = GetComponent<Rigidbody2D>(); 
         tr = GetComponent<TrailRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -43,9 +43,7 @@ public class saltoSolaris : MonoBehaviour
             return;
         }
         moveInput.x = Input.GetAxis("Horizontal");
-        //moveInput.y = Input.GetAxis("Vertical");
 
-        // Detectar salto con barra espaciadora
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -83,7 +81,7 @@ public class saltoSolaris : MonoBehaviour
             }
 
             tr.emitting = false;
-            rb.gravityScale = gravedadOriginal;
+            rb.gravityScale = 4.5f;
             isDashing = false;
         }
     }
@@ -113,7 +111,7 @@ public class saltoSolaris : MonoBehaviour
         transform.localScale = scale;
     }
 
-    void Jump() //cambio de bandera para verificar que esta en el suelo
+    void Jump() 
     {
         if (isGrounded)
         {
@@ -142,12 +140,29 @@ public class saltoSolaris : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Verificar si el personaje está tocando el suelo
-        if (collision.gameObject.CompareTag("suelo") || collision.gameObject.CompareTag("enemigo"))
+        string tag = collision.gameObject.tag;
+
+        if (tag == "suelo" || tag == "enemigo")
         {
             isGrounded = true;
             cooldownDash = true;
             aeterius.cooldownSalto = true;
+
+            if (isDashing)
+            {
+                isDashing = false;
+                rb.gravityScale = 1f;
+                tr.emitting = false;
+            }
+        }
+        else if (tag != "paredDebil")
+        {
+            if (isDashing)
+            {
+                isDashing = false;
+                rb.gravityScale = 1f;
+                tr.emitting = false;
+            }
         }
     }
 }

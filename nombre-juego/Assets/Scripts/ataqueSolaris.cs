@@ -23,7 +23,6 @@ public class ataqueSolaris : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && Time.time >= tiempoSiguienteAtaque)
         {
-            Debug.Log("Golpe");
             Attack();
             tiempoSiguienteAtaque = Time.time + cooldownAtaque;
         }
@@ -41,7 +40,6 @@ public class ataqueSolaris : MonoBehaviour
             {
                 damageZone.RecibirGolpe();
                 golpeoEnemigo = true;
-                Debug.Log("Dron golpeado por ataque de Solaris");
             }
         }
 
@@ -58,12 +56,10 @@ public class ataqueSolaris : MonoBehaviour
                 TriggerRompible trigger = pared.GetComponent<TriggerRompible>();
                 if (trigger != null)
                 {
-                    Debug.Log("Activando trigger especial con golpe de Solaris");
                     trigger.Activar();
                 }
                 else
                 {
-                    Debug.Log("Pared débil normal destruida");
                     controladorAudio.PlaySFX(controladorAudio.paredRota);
                     Destroy(pared.gameObject);
                 }

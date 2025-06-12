@@ -130,7 +130,6 @@ public class logicaDron : MonoBehaviour
         {
             detenido = true;
             tiempoDetenido = segundos;
-            Debug.Log("Dron detenido por " + segundos + " segundos.");
         }
     }
 

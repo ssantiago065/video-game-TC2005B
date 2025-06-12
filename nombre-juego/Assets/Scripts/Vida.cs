@@ -9,14 +9,17 @@ public class Vida : MonoBehaviour
     public Slider healthSlider;
     controladorAudio controladorAudio;
 
-    private void Awake()
+    void Awake()
     {
         controladorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<controladorAudio>();
+        if (currentHealth <= 0f)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     void Start()
     {
-        currentHealth = maxHealth;
         UpdateHealthBar();
     }
 

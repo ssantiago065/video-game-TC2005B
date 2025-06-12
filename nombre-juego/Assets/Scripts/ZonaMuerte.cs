@@ -6,8 +6,6 @@ public class ZonaMuerte : MonoBehaviour
     {
         if (collision.collider.CompareTag("jugador"))
         {
-            Debug.Log("Jugador colisionó con la Zona de Muerte");
-
             Vida vidaJugador = collision.collider.GetComponentInParent<Vida>();
             if (vidaJugador != null)
             {

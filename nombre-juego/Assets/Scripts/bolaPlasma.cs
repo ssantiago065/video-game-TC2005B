@@ -35,8 +35,6 @@ public class bolaPlasma : MonoBehaviour
     {
         if (other.CompareTag("jugador"))
         {
-            Debug.Log("Jugador golpeado");
-
             ModificadorDaño mod = other.GetComponent<ModificadorDaño>();
             float multiplicador = (mod != null) ? mod.multiplicadorDaño : 1f;
 
