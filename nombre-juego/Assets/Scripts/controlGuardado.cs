@@ -10,7 +10,12 @@ public class controlGuardado : MonoBehaviour
     void Start()
     {
         saveLocation = Path.Combine(Application.persistentDataPath, "datosGuardado.json");
-        StartCoroutine(CargarJuegoLuegoDeUnFrame());
+
+        if (PlayerPrefs.GetInt("CargarGuardado", 0) == 1)
+        {
+            PlayerPrefs.SetInt("CargarGuardado", 0);
+            StartCoroutine(CargarJuegoLuegoDeUnFrame());
+        }
     }
 
     public void guardarJuego()
@@ -46,16 +51,14 @@ public class controlGuardado : MonoBehaviour
 
         string json = JsonUtility.ToJson(datos, true);
         File.WriteAllText(saveLocation, json);
-
     }
 
-    IEnumerator CargarJuegoLuegoDeUnFrame()
+    public IEnumerator CargarJuegoLuegoDeUnFrame()
     {
         yield return null;
 
         if (!File.Exists(saveLocation))
         {
-            guardarJuego();
             yield break;
         }
 
@@ -64,7 +67,6 @@ public class controlGuardado : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != datos.indiceNivel)
         {
-            SceneManager.LoadScene(datos.indiceNivel);
             yield break;
         }
 
@@ -102,7 +104,6 @@ public class controlGuardado : MonoBehaviour
                 vidaScript.SetCurrentHealth(datos.vidaActual);
                 vidaScript.SendMessage("UpdateHealthBar", SendMessageOptions.DontRequireReceiver);
             }
-
         }
     }
 }

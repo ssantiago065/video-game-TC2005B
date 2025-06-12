@@ -7341,7 +7341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 40
+  jumpForce: 18
   isGrounded: 0
   cooldownSalto: 0
   solaris: {fileID: 610804521}
@@ -8614,7 +8614,7 @@ SpriteRenderer:
   m_Size: {x: 1.42, y: 2.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1917334530

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 8b042aeaa7b0dea4a992a93ff6a3337d
+guid: 0020f52687f81e74bad6d884f2028e12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1723341313529455366
-    second: pilar_0
+      213: -7285974151448244601
+    second: ChatGPT Image Jun 4, 2025, 01_47_00 PM_0
+  - first:
+      213: -8255083088759065700
+    second: ChatGPT Image Jun 4, 2025, 01_47_00 PM_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pilar_0
+      name: ChatGPT Image Jun 4, 2025, 01_47_00 PM_0
       rect:
         serializedVersion: 2
-        x: 281
-        y: 159
-        width: 458
-        height: 1195
+        x: 78
+        y: 88
+        width: 900
+        height: 527
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 603ada34bc98ae710800000000000000
-      internalID: 1723341313529455366
+      spriteID: 78ecf3cac1503ea90800000000000000
+      internalID: -7285974151448244601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image Jun 4, 2025, 01_47_00 PM_1
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 531
+        width: 207
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c937e270bad007d80800000000000000
+      internalID: -8255083088759065700
       vertices: []
       indices: 
       edges: []
@@ -134,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ChatGPT Image Jun 4, 2025, 01_47_00 PM_0: -7285974151448244601
+      ChatGPT Image Jun 4, 2025, 01_47_00 PM_1: -8255083088759065700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
