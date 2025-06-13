@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fondo boss fight_0: 423002390756134576
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Isla jefe_0: 2617474298117156092
+      Isla jefe_1: -673761866726320854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

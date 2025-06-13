@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      piedra rota_0: 3038786083414268721
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
